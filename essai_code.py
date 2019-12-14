@@ -15,5 +15,6 @@ class Perso() :
         self.mana -= 4
         return dmg
         
-    def frapper(self) :
-        return "Il frappe"
+    def avancer(self) :
+        return "Il avance"
+
