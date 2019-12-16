@@ -1,51 +1,42 @@
 import os
-import glob
 
-def existe_un_repertoire(rep) :
-    for i in os.listdir(rep) :
-        if not os.path.isdir(rep) :
-            return False
-    return True
-
-def nb_rep(rep) :
-    nb = 0
-    for i in os.listdir(rep) :
-        if os.path.isdir(i) :
-            nb += 1
-    return nb
-    
+   
     
 def rechercher_fichier(rep, nom_fichier) :
-    chemin = rep
-
+    
+    
     for fichier in os.listdir(rep) :
+        
+        chemin = rep
         
         
         if fichier == nom_fichier :
-            chemin = chemin + "/" + fichier
-            print("Trouvéééééééééééééééééééééééééééééééé", " ====== ", chemin)
-            return chemin
-            
+        
+            if os.path.isdir(chemin) :
+                chemin = rep + "/" + fichier
+                print("Le fichier existe et se trouve dans ", chemin)
+                return chemin
+        
         else :     
-            fichier = chemin + "/" + fichier
-            
-            if os.path.isdir(fichier) :
-                
-                
-                rechercher_fichier(fichier, nom_fichier)
 
+            chemin = rep + "/" + fichier
+            
+            if os.path.isdir(chemin) :
+               
+                rechercher_fichier(chemin, nom_fichier)
                 
-            
-                        
-                
-            
-            
-    
 
+def factorielle(n) :
+    if n == 0 or n == 1 :
+        return 1
+    else :
+        return n * factorielle(n - 1)
 
 if __name__ == "__main__" :
-    existe_fichier = rechercher_fichier(".", "et voici le meilleur")
-    print(existe_fichier)
+
+    print(rechercher_fichier("/home/paul/Documents", "code cv jooble"))
+    
+    print(factorielle(5))
  
     
     
